@@ -20,7 +20,7 @@ public class DemoControllerTest {
 
     @Test
     public void getUser() throws Exception {
-        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/getUser"))
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.get("/getUser"))
                 .andReturn().getResponse().getContentAsString();
         System.out.println("result : " + responseString);
     }

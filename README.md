@@ -29,6 +29,7 @@ Learning Spring Boot 是一个系统介绍、学习并实战 Spring Boot 的项�
 * [3. Spring Boot Web 开发之热部署](https://github.com/flanliulf/learningspringboot-web/tree/hot-deployment)
 * [4. Spring Boot Web 开发之单元测试](https://github.com/flanliulf/learningspringboot-web/tree/unit-test)
 * [5. Spring Boot Web 开发之JSON](https://github.com/flanliulf/learningspringboot-web-support/tree/json)
+* [6. Spring Boot Web 开发之参数传递](https://github.com/flanliulf/learningspringboot-web-support/tree/params)
 * to be continued
 
 

@@ -1,6 +1,7 @@
 package com.fancyliu.learningspringboot.controller;
 
 import com.fancyliu.learningspringboot.model.User;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,6 @@ public class DemoController {
         user.setName("zhangsan");
         user.setPass("123456");
         return user;
-
     }
 
     @RequestMapping(value = "/getUsers", method = RequestMethod.POST)
@@ -38,5 +38,17 @@ public class DemoController {
         list.add(user2);
 
         return list;
+    }
+
+    @RequestMapping(value = "/getUserName", method = RequestMethod.POST)
+    public User getUserName(User user) {
+        user.setAge(18);
+        user.setPass("123456");
+        return user;
+    }
+
+    @RequestMapping(value="get/{name}", method=RequestMethod.GET)
+    public String get(@PathVariable String name) {
+        return name;
     }
 }
