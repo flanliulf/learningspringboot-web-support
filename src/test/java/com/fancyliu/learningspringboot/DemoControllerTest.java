@@ -32,4 +32,14 @@ public class DemoControllerTest {
         System.out.println("result : " + responseString);
     }
 
+    @Test
+    public void saveUser() throws Exception {
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/saveUser")
+        .param("name", "")
+        .param("age", "777")
+        .param("pass","123"))
+                .andReturn().getResponse().getContentAsString();
+        System.out.println("result : " + responseString);
+    }
+
 }
