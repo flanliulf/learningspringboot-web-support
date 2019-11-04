@@ -31,7 +31,7 @@ Learning Spring Boot 是一个系统介绍、学习并实战 Spring Boot 的项�
 * [5. Spring Boot Web 开发之JSON](https://github.com/flanliulf/learningspringboot-web-support/tree/json)
 * [6. Spring Boot Web 开发之参数传递](https://github.com/flanliulf/learningspringboot-web-support/tree/params)
 * [7. Spring Boot Web 开发之数据校验](https://github.com/flanliulf/learningspringboot-web-support/tree/validation)
-* [7. Spring Boot Web 开发之自定义 Filter](https://github.com/flanliulf/learningspringboot-web-support/tree/filter)
+* [8. Spring Boot Web 开发之自定义 Filter](https://github.com/flanliulf/learningspringboot-web-support/tree/filter)
 * to be continued
 
 

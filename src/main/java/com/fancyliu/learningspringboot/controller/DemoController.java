@@ -24,7 +24,7 @@ public class DemoController {
         return user;
     }
 
-    @RequestMapping(value = "/getUsers", method = RequestMethod.POST)
+    @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     public List<User> getUsers() {
         List<User> list = new ArrayList<>();
 
