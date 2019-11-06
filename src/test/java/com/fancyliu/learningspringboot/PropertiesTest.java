@@ -1,6 +1,5 @@
 package com.fancyliu.learningspringboot;
 
-import com.fancyliu.learningspringboot.config.CustomProperties;
 import com.fancyliu.learningspringboot.config.OakProperties;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,8 +20,6 @@ public class PropertiesTest {
     @Resource
     private OakProperties properties;
 
-    @Resource
-    private CustomProperties customProperties;
 
     @Test
     public void single() {
@@ -34,13 +31,6 @@ public class PropertiesTest {
         System.out.println("author:" + properties.getAuthor());
         System.out.println("title:" + properties.getTitle());
         System.out.println("description:" + properties.getDescription());
-    }
-
-    @Test
-    public void custom() {
-        System.out.println("author:" + customProperties.getAuthor());
-        System.out.println("blog:" + customProperties.getBlog());
-        System.out.println("description:" + customProperties.getDescription());
     }
 
 }

@@ -33,6 +33,13 @@ Learning Spring Boot 是一个系统介绍、学习并实战 Spring Boot 的项�
 * [7. Spring Boot Web 开发之数据校验](https://github.com/flanliulf/learningspringboot-web-support/tree/validation)
 * [8. Spring Boot Web 开发之自定义 Filter](https://github.com/flanliulf/learningspringboot-web-support/tree/filter)
 * [9. Spring Boot Web 开发之配置文件](https://github.com/flanliulf/learningspringboot-web-support/tree/properties)
+* [10.Spring Boot 集成 Thymeleaf](https://github.com/flanliulf/learningspringboot-web-thymeleaf/tree/master)
+* [11.Spring Boot Web 开发之文件上传](https://github.com/flanliulf/learningspringboot-web-thymeleaf/tree/file-upload)
+   * [1. 单文件上传](https://github.com/flanliulf/learningspringboot-web-thymeleaf/tree/file-upload)
+   * [2. 文件上传异常处理](https://github.com/flanliulf/learningspringboot-web-thymeleaf/tree/file-upload-exception-handle)
+   * [3. 多文件上传](https://github.com/flanliulf/learningspringboot-web-thymeleaf/tree/file-upload-multi)
+* [12.Spring Boot 构建 RESTful Web 服务](https://github.com/flanliulf/learningspringboot-web-support/tree/restful)
+
 * to be continued
 
 

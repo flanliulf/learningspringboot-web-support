@@ -20,7 +20,7 @@ public class DemoController {
         User user = new User();
         user.setAge(18);
         user.setName("zhangsan");
-        user.setPass("123456");
+        user.setPassword("123456");
         return user;
     }
 
@@ -31,13 +31,13 @@ public class DemoController {
         User user1 = new User();
         user1.setAge(18);
         user1.setName("zhangsan");
-        user1.setPass("123456");
+        user1.setPassword("123456");
         list.add(user1);
 
         User user2 = new User();
         user2.setAge(20);
         user2.setName("lisi");
-        user2.setPass("111111");
+        user2.setPassword("111111");
         list.add(user2);
 
         return list;
@@ -46,7 +46,7 @@ public class DemoController {
     @RequestMapping(value = "/getUserName", method = RequestMethod.POST)
     public User getUserName(User user) {
         user.setAge(18);
-        user.setPass("123456");
+        user.setPassword("123456");
         return user;
     }
 

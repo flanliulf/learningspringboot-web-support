@@ -37,7 +37,7 @@ public class DemoControllerTest {
         String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/saveUser")
         .param("name", "")
         .param("age", "777")
-        .param("pass","123"))
+        .param("password","123"))
                 .andReturn().getResponse().getContentAsString();
         System.out.println("result : " + responseString);
     }
