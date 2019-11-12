@@ -21,4 +21,9 @@ public class SimpleErrorController {
         a.toString();
         return "npe";
     }
+
+//    @RequestMapping(value = "/error/500")
+//    public String innerError() {
+//        return "error";
+//    }
 }

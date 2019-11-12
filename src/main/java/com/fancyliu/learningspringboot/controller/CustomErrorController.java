@@ -1,40 +1,59 @@
 package com.fancyliu.learningspringboot.controller;
 
-import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.boot.autoconfigure.web.ErrorProperties;
+import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
+import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @Controller
-public class CustomErrorController {
+public class CustomErrorController extends BasicErrorController {
 
-//    private final String DEFAULT_ERROR_PATH = "/error";
+    public CustomErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties) {
+        super(errorAttributes, errorProperties);
+    }
 
-//    @Override
-//    public String getErrorPath() {
-//        return DEFAULT_ERROR_PATH;
-//    }
-//
-//    @RequestMapping(value = DEFAULT_ERROR_PATH)
-//    public String handleError(HttpServletRequest request) {
-//        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-//
-//        if (status != null) {
-//            Integer statusCode = Integer.valueOf(status.toString());
-//
-//            if (statusCode == HttpStatus.NOT_FOUND.value()) {
-//                return "404";
-//            }
-//
-//            if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-//                return "500";
-//            }
-//        }
-//        return "error";
-//    }
+    public CustomErrorController() {
+        super(new DefaultErrorAttributes(), new ErrorProperties());
+    }
+
+    /**
+     * 定义 500错误的 ModelAndView
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(produces = "text/html", value = "/500")
+    public ModelAndView error500html(HttpServletRequest request, HttpServletResponse response) {
+        response.setStatus(getStatus(request).value());
+        Map<String, Object> model = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.TEXT_HTML));
+        model.put("msg", "这里是自定义的 500 错误信息");
+        return new ModelAndView("error/500", model);
+    }
+
+    /**
+     * 定义 500错误的 JSON信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/500")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> error500(HttpServletRequest request) {
+        Map<String, Object> body = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.ALL));
+        HttpStatus status = getStatus(request);
+        return new ResponseEntity<Map<String, Object>>(body, status);
+    }
 
 }

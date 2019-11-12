@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义错误页面</title>
+</head>
+<body>
+<h1>动态 500 错误页面</h1>
+错误类型: <p th:text="${error}"></p>
+请求状态: <p th:text="${status}"></p>
+错误信息: <p th:text="${message}"></p>
+自定义错误信息: <p th:text="${msg}"></p>
+</body>
+</html>
