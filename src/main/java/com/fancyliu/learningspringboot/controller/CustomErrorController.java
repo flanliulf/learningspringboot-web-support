@@ -27,33 +27,36 @@ public class CustomErrorController extends BasicErrorController {
         super(new DefaultErrorAttributes(), new ErrorProperties());
     }
 
-    /**
-     * 定义 500错误的 ModelAndView
-     *
-     * @param request
-     * @param response
-     * @return
-     */
-    @RequestMapping(produces = "text/html", value = "/500")
-    public ModelAndView error500html(HttpServletRequest request, HttpServletResponse response) {
-        response.setStatus(getStatus(request).value());
-        Map<String, Object> model = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.TEXT_HTML));
-        model.put("msg", "这里是自定义的 500 错误信息");
-        return new ModelAndView("error/500", model);
-    }
-
-    /**
-     * 定义 500错误的 JSON信息
-     *
-     * @param request
-     * @return
-     */
-    @RequestMapping(value = "/500")
-    @ResponseBody
-    public ResponseEntity<Map<String, Object>> error500(HttpServletRequest request) {
-        Map<String, Object> body = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.ALL));
-        HttpStatus status = getStatus(request);
-        return new ResponseEntity<Map<String, Object>>(body, status);
-    }
+//    /**
+//     * 定义 500错误的 ModelAndView
+//     *
+//     * @param request
+//     * @param response
+//     * @return
+//     */
+//    @RequestMapping(produces = "text/html", value = "/500")
+//    public ModelAndView error500html(HttpServletRequest request, HttpServletResponse response) {
+//        response.setStatus(getStatus(request).value());
+//        Map<String, Object> model = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.TEXT_HTML));
+//        model.put("msg", "这里是自定义的 500 错误信息");
+//        model.put("message", request.getParameter("message"));
+//        return new ModelAndView("error/500", model);
+//    }
+//
+//    /**
+//     * 定义 500错误的 JSON信息
+//     *
+//     * @param request
+//     * @return
+//     */
+//    @RequestMapping(value = "/500")
+//    @ResponseBody
+//    public ResponseEntity<Map<String, Object>> error500(HttpServletRequest request) {
+//        Map<String, Object> body = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.ALL));
+//        body.put("message", request.getParameter("message"));
+//        body.put("msg", "这里是自定义的 500 错误信息");
+//        HttpStatus status = getStatus(request);
+//        return new ResponseEntity<Map<String, Object>>(body, status);
+//    }
 
 }

@@ -42,6 +42,7 @@ Learning Spring Boot 是一个系统介绍、学习并实战 Spring Boot 的项�
 * [13.Spring Boot 集成 Swagger2 构建 RESTful APIs](https://github.com/flanliulf/learningspringboot-web-support/tree/swagger)
 * [14.Spring Boot 统一异常处理之自定义错误页面](https://github.com/flanliulf/learningspringboot-web-support/tree/whitelabel)
 * [15.Spring Boot 统一异常处理之 ErrorController 和 customize](https://github.com/flanliulf/learningspringboot-web-support/tree/error-customize)
+* [16.Spring Boot 统一异常处理之 @ControllerAdvice](https://github.com/flanliulf/learningspringboot-web-support/tree/controller-advice)
 
 * to be continued
 
