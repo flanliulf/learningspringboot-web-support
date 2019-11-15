@@ -1,5 +1,8 @@
 package com.fancyliu.learningspringboot.controller;
 
+import com.fancyliu.learningspringboot.common.response.ResponseData;
+import com.fancyliu.learningspringboot.exception.ApiServiceException;
+import com.fancyliu.learningspringboot.exception.ParamBindException;
 import com.fancyliu.learningspringboot.model.User;
 import com.fancyliu.learningspringboot.service.UserService;
 import io.swagger.annotations.*;
@@ -36,15 +39,15 @@ public class UserController {
             @ApiResponse(code = 404, message = "请求路径不存在")
     })
     @PostMapping("user")
-    public User add(User user) {
+    public ResponseData add(User user) {
         User result = this.userService.save(user);
-        return result;
+        return new ResponseData(true, 200, "保存成功", result);
     }
 
     @PutMapping("user")
-    public User update(User user) {
+    public ResponseData update(User user) {
         User result = this.userService.update(user);
-        return result;
+        return new ResponseData(true, 200, "操作成功", result);
     }
 
     @PatchMapping("user/name")
@@ -59,6 +62,7 @@ public class UserController {
         return "success";
     }
 
+
     @GetMapping("user/{id}")
     public User find(@PathVariable("id") Integer id) {
         User user = this.userService.findById(id);
@@ -69,5 +73,29 @@ public class UserController {
     public List<User> list() {
         List<User> users = this.userService.findAll();
         return users;
+    }
+
+    @PostMapping("user/ex/{param}")
+    public ResponseData ex(@PathVariable("param") Integer param) {
+        // 默认自定义参数绑定异常
+        if ("1".equals(param)) {
+            throw new ParamBindException();
+        }
+
+        // 模拟自定义 API 接口调用异常
+        if ("2".equals(param)) {
+            throw new ApiServiceException();
+        }
+
+        // 模拟空指针系统异常
+        if ("3".equals(param)) {
+            throw new NullPointerException();
+        }
+
+        // 模拟数字格式转换系统异常
+        Integer p = Integer.valueOf(param);
+
+        ResponseData responseData = new ResponseData(true, 200, "操作成功", p);
+        return responseData;
     }
 }

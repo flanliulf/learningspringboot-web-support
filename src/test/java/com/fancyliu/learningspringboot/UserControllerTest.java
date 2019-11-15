@@ -68,7 +68,7 @@ public class UserControllerTest {
 
     @Test
     public void testGet() throws Exception {
-        String content = mockMvc.perform(MockMvcRequestBuilders.get("/user/10"))
+        String content = mockMvc.perform(MockMvcRequestBuilders.get("/user/1"))
                 .andReturn().getResponse().getContentAsString();
         System.out.println("test method testGet() result === " + content);
     }
@@ -77,7 +77,7 @@ public class UserControllerTest {
     @Test
     public void testUpdate() throws Exception {
         final MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("id", "10");
+        params.add("id", "aaa");
         params.add("name", "Bravo");
         params.add("password", "123456");
         params.add("age", "88");
@@ -109,6 +109,16 @@ public class UserControllerTest {
         String content = mockMvc.perform(MockMvcRequestBuilders.get("/users"))
                 .andReturn().getResponse().getContentAsString();
         System.out.println("test method testDelete() result === " + content);
+    }
+
+    @Test
+    public void ex() throws Exception {
+        final MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("id", "10");
+
+        String content = mockMvc.perform(MockMvcRequestBuilders.post("/user/ex").params(params))
+                .andReturn().getResponse().getContentAsString();
+        System.out.println("test method testUpdate() result === " + content);
     }
 
 }

@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 @Controller
-public class CustomErrorController extends BasicErrorController {
+public class CustomErrorController{
 
-    public CustomErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties) {
-        super(errorAttributes, errorProperties);
-    }
-
-    public CustomErrorController() {
-        super(new DefaultErrorAttributes(), new ErrorProperties());
-    }
+//    public CustomErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties) {
+//        super(errorAttributes, errorProperties);
+//    }
+//
+//    public CustomErrorController() {
+//        super(new DefaultErrorAttributes(), new ErrorProperties());
+//    }
 
 //    /**
 //     * 定义 500错误的 ModelAndView

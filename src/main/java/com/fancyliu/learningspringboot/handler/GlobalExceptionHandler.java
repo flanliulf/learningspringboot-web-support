@@ -1,27 +1,42 @@
 package com.fancyliu.learningspringboot.handler;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import com.fancyliu.learningspringboot.common.response.ResponseData;
+import com.fancyliu.learningspringboot.exception.GlobalException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    @ResponseBody
-    public Object handle(Exception e, HttpServletRequest request) {
-        Map<String, Object> returnMap = new HashMap<>();
+    public ResponseData handle(Exception ge, HttpServletRequest request) {
+        ResponseData responseData = new ResponseData();
+        responseData.setData(null);
+        responseData.setSuccess(false);
 
-        returnMap.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());
-        returnMap.put("message", e.getMessage() == null ? e.toString() : e.getMessage());
-        returnMap.put("data", "");
-        returnMap.put("success", false);
+        if (ge instanceof GlobalException) {
+            // 对于自定义的业务异常进行封装
+            responseData.setCode(((GlobalException) ge).getCode());
+            responseData.setMessage(ge.getMessage());
+        } else if (ge instanceof ServletException) {
+            // Servlet 请求异常
+            responseData.setCode(400);
+            responseData.setMessage(ge.getClass().getSimpleName() + ":" + ge.getMessage());
+        } else if (ge instanceof ServletException) {
+            // 其他的运行时系统异常
+            responseData.setCode(500);
+            responseData.setMessage(ge.getClass().getSimpleName() + ":" + ge.getMessage());
+        }
 
-        return returnMap;
+        else {
+            // 其他的运行时系统异常
+            responseData.setCode(500);
+            responseData.setMessage(ge.getClass().getSimpleName() + ":" + ge.getMessage());
+        }
+
+        return responseData;
     }
 }
