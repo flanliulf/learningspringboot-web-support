@@ -7,6 +7,7 @@ import com.fancyliu.learningspringboot.model.User;
 import com.fancyliu.learningspringboot.service.UserService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class UserController {
         return new ResponseData(true, 200, "保存成功", result);
     }
 
-    @PutMapping("user")
+    @PutMapping(value = "user",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseData update(User user) {
         User result = this.userService.update(user);
         return new ResponseData(true, 200, "操作成功", result);
